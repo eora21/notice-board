@@ -1,0 +1,25 @@
+package com.nhnacademy.notice_board.controller.user;
+
+import com.nhnacademy.notice_board.anotation.RequestMapping;
+import com.nhnacademy.notice_board.controller.Command;
+import com.nhnacademy.notice_board.model.user.User;
+import com.nhnacademy.notice_board.repository.user.MemoryUserRepository;
+import com.nhnacademy.notice_board.repository.user.UserRepository;
+import lombok.extern.slf4j.Slf4j;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Slf4j
+@RequestMapping(url = "/user/view.do")
+public class UserViewController implements Command {
+    private final UserRepository userRepository = MemoryUserRepository.getInstance();
+
+    @Override
+    public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        String id = req.getParameter("id");
+        User user = userRepository.getUser(id);
+        req.setAttribute("user", user);
+        return "/user/view.jsp";
+    }
+}
