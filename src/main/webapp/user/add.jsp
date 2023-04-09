@@ -11,10 +11,11 @@
     <title>add</title>
 </head>
 <body>
-<form method="post" action="/user/add.do">
-    <label for="id">id: </label><input name="id" id="id"><br>
-    <label for="pw">pw: </label><input type="password" name="pw" id="pw"><br>
-    <label for="name">name: </label><input name="name" id="name"><br>
+<form method="post" action="/user/add.do" enctype="multipart/form-data">
+    <label for="id">id: </label><input name="id" id="id" required><br>
+    <label for="pw">pw: </label><input type="password" name="pw" id="pw" required><br>
+    <label for="name">name: </label><input name="name" id="name" required><br>
+    <label for="profile">name: </label><input type="file" name="profile" id="profile" accept="image/png, image/jpeg" ><br>
     <button type="submit">추가</button>
 </form>
 </body>

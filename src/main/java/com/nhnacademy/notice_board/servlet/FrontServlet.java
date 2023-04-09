@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,11 @@ import java.io.IOException;
 
 @Slf4j
 @WebServlet(name = "frontServlet", urlPatterns = "*.do")
+@MultipartConfig(
+        maxFileSize = 1024 * 1024 * 10, // 10 MB
+        maxRequestSize = 1024 * 1024 * 100, // 100 MB
+        location = "/Users/eora21/Desktop/nhn/projects/notice_board/upload/temp"
+)
 public class FrontServlet extends HttpServlet {
     public static final String REDIRECT = "redirect:";
     private ControllerFactory controllerFactory;

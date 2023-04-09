@@ -22,7 +22,6 @@ public class LoginFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
         log.info("loginFilter: {}", httpServletRequest.getServletPath());
-
         if (httpServletRequest.getSession(false) == null
                 && (!EXCLUSIVE_URL.contains(httpServletRequest.getServletPath()))) {
             ((HttpServletResponse) servletResponse).sendRedirect("/login/login.jsp");

@@ -22,7 +22,7 @@ public class MemoryUserRepository implements UserRepository {
 
     @Override
     public void add(User user) throws AlreadyExistException {
-        if (USERS.containsKey(user.getId())) {
+        if (exist(user.getId())) {
             throw new AlreadyExistException();
         }
         USERS.put(user.getId(), user);
@@ -30,12 +30,12 @@ public class MemoryUserRepository implements UserRepository {
 
     @Override
     public void modify(User user) throws NotFoundException, NotEqualIdException {
-        getUser(user.getId()).update(user);
+        getUser(user.getId()).updateProfile(user);
     }
 
     @Override
     public User remove(String id) {
-        if (!USERS.containsKey(id)) {
+        if (!exist(id)) {
             throw new NotFoundException();
         }
 
@@ -44,7 +44,7 @@ public class MemoryUserRepository implements UserRepository {
 
     @Override
     public User getUser(String id) throws NotFoundException {
-        if (!USERS.containsKey(id)) {
+        if (!exist(id)) {
             throw new NotFoundException();
         }
 
@@ -54,5 +54,10 @@ public class MemoryUserRepository implements UserRepository {
     @Override
     public List<User> getUsers() {
         return new ArrayList<>(USERS.values());
+    }
+
+    @Override
+    public boolean exist(String id) {
+        return USERS.containsKey(id);
     }
 }

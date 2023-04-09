@@ -15,7 +15,7 @@ public class User {
     private String profileFileName;
     private Authority authority;
 
-    public void update(User user) throws NotEqualIdException {
+    public void updateProfile(User user) throws NotEqualIdException {
         if (!this.id.equals(user.getId())) {
             throw new NotEqualIdException();
         }
@@ -24,6 +24,10 @@ public class User {
         this.name = user.getName();
         this.profileFileName = user.getProfileFileName();
         this.authority = user.getAuthority();
+    }
+
+    public void updateProfile(String profileFileName) {
+        this.profileFileName = profileFileName;
     }
 
     public boolean isCorrectPassword(String password) {
