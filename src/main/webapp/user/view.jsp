@@ -14,6 +14,8 @@
 <body>
 <c:set var="user" value="${requestScope.get('user')}"/>
 <h1>${user.name}</h1>
+<img src="${user.profileFileName}" alt="프로필"/>
+<button onclick="location.href='/user/profile.jsp?id=${user.id}'">프로필 업로드</button>
 <button onclick="location.href='/user/update.do?id=${user.id}'">수정</button>
 <form method="post" action="/user/delete.do">
     <input type="hidden" name="id" value="${user.id}">

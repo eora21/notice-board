@@ -30,7 +30,10 @@ public class MemoryUserRepository implements UserRepository {
 
     @Override
     public void modify(User user) throws NotFoundException, NotEqualIdException {
-        getUser(user.getId()).updateProfile(user);
+        if (!exist(user.getId())) {
+            throw new AlreadyExistException();
+        }
+        USERS.put(user.getId(), user);
     }
 
     @Override

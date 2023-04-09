@@ -1,12 +1,10 @@
 package com.nhnacademy.notice_board.filter;
 
-import com.nhnacademy.notice_board.model.post.Post;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 

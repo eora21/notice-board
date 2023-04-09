@@ -26,7 +26,8 @@ public class MemoryPostRepository implements PostRepository {
 
     @Override
     public void modify(Post post) {
-        getPost(post.getId()).update(post);
+        validIdExist(post.getId());
+        POSTS.put(post.getId(), post);
     }
 
     @Override

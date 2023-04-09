@@ -17,5 +17,7 @@
     <p><a href="/user/view.do?id=${user.id}">${user.name}</a></p>
 </c:forEach>
 <button onclick="location.href='/user/add.jsp'">유저 추가</button>
+<button onclick="location.href='/logout.do'">로그아웃</button>
+<p>현재 로그인 유저 수: ${requestScope.get('loginCount')}</p>
 </body>
 </html>

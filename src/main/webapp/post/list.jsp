@@ -13,12 +13,13 @@
 </head>
 <body>
 <h1>게시물 목록</h1>
-<c:forEach var="post" items="${requestScope.get('posts')}">
-    <h3>제목: <a href="/post/view.do?id=${post.id}">${post.title}</a></h3>
-    <p>작성자: ${post.writerUserId}</p>
-    <p>작성 시각: ${post.writeTime}</p>
-    <p>조회수: ${post.viewCount}</p>
+<c:forEach var="user" items="${requestScope.get('posts')}">
+    <h3>제목: <a href="/post/view.do?id=${user.id}">${user.title}</a></h3>
+    <p>작성 시각: ${user.writeTime}</p>
+    <p>조회수: ${user.viewCount}</p>
 </c:forEach>
 <button onclick="location.href='/post/write.jsp'">글쓰기</button>
+<button onclick="location.href='/logout.do'">로그아웃</button>
+<p>현재 로그인 유저 수: ${requestScope.get('loginCount')}</p>
 </body>
 </html>

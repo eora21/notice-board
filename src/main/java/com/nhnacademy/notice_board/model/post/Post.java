@@ -28,12 +28,9 @@ public class Post {
         this.viewCount = 0;
     }
 
-    public void update(Post post) throws NotEqualIdException {
-        if (this.id != post.getId()) {
-            throw new NotEqualIdException();
-        }
-        this.title = post.getTitle();
-        this.content = post.getContent();
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
     public void increaseViewCount() {

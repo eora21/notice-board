@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @RequestMapping(url = "/login.do", method = RequestMapping.Method.POST)
 public class LoginController implements Command {
-    private static final UserRepository USER_REPOSITORY = MemoryUserRepository.getInstance();
+    private static final UserRepository USER_REPOSITORY = FrontServlet.USER_REPOSITORY;
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {

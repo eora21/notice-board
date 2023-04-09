@@ -2,8 +2,9 @@ package com.nhnacademy.notice_board.controller.post;
 
 import com.nhnacademy.notice_board.anotation.RequestMapping;
 import com.nhnacademy.notice_board.controller.Command;
-import com.nhnacademy.notice_board.repository.post.MemoryPostRepository;
 import com.nhnacademy.notice_board.repository.post.PostRepository;
+import com.nhnacademy.notice_board.servlet.FrontServlet;
+import com.nhnacademy.notice_board.util.LoginUserCounterUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(url = "/post/list.do")
 public class PostListController implements Command {
 
-    private final PostRepository memoryPostRepository = MemoryPostRepository.getInstance();
+    private static final PostRepository POST_REPOSITORY = FrontServlet.POST_REPOSITORY;
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
-        req.setAttribute("posts", memoryPostRepository.getPosts());
+        req.setAttribute("posts", POST_REPOSITORY.getPosts());
+        req.setAttribute("loginCount", LoginUserCounterUtil.getCount());
 
         return "/post/list.jsp";
     }
